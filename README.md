@@ -172,7 +172,7 @@ https://todo-full-stack-ra3x.onrender.com
 ```
 * Frontend → Vercel
 ```
-https://todo-full-stack-dl8hl93fn-shravan-kumars-projects-fa9f521e.vercel.app/
+https://todo-full-stack-vert.vercel.app/
 
 ```
 
