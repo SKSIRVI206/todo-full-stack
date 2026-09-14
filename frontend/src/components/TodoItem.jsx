@@ -18,12 +18,12 @@ const TodoItem = ({ todo }) => {
   const handleDelete = async (id) => { 
     console.log("Deleting todo with id:", id); 
     try { 
-      const response = await axios.delete(`/api/${id}`); 
+      const response = await axios.delete(`${import.meta.env.VITE_API_URL}${id}`); 
       showNotification(response.data.message); 
       setTodos((prevTodos) => prevTodos.filter((todo) => todo._id !== id)); 
     } catch (error) { 
       console.error("Error deleting todo:", error); 
-      showNotification(error.response?.data?.message || "Failed to delete todo"); 
+      showNotification(error.response.data.message); 
     } 
   }; 
   // todo edit with its id 
@@ -31,7 +31,7 @@ const TodoItem = ({ todo }) => {
     console.log("Editing todo with id:", id); 
     console.log("Updated todo:", editTodo); 
     try { 
-      const response = await axios.put(`/api/${id}`, editTodo); 
+      const response = await axios.put(`${import.meta.env.VITE_API_URL}${id}`, editTodo); 
       showNotification(response.data.message); 
       setTodos((prevTodos) => 
         prevTodos.map((todo) => (todo._id === id ? response.data.data : todo)), 
@@ -46,7 +46,7 @@ const TodoItem = ({ todo }) => {
   // todo status update with its id 
   const handleUpdateStatus = async (id) => { 
     try { 
-      const response = await axios.patch(`/api/${id}`, { 
+      const response = await axios.patch(`${import.meta.env.VITE_API_URL}${id}`, { 
         isCompleted: editStatus, 
       }); 
       console.log(response.data.data); 

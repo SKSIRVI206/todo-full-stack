@@ -17,7 +17,7 @@ const TodoForm = () => {
       isCompleted: false,
     };
     try {
-      const response = await axios.post("/api", newTodo);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}`, newTodo);
       setTodos((prevTodos) => [...prevTodos, response.data.data]);
       showNotification(response.data.message);
     } catch (error) {

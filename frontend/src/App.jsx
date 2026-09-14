@@ -16,7 +16,7 @@ const App = () => {
       setLoading(true);
       try {
         console.log("Fetching todos from API...");
-        const response = await axios.get("/api");
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}`);
         setTodos(response.data.data);
         console.log(response.data.data);
       } catch (error) {
